@@ -26,8 +26,8 @@ class ObfuscateSpec extends WordSpec with Matchers {
 
     val obfuscatedToString = testObfuscatePassword.toString
 
-    obfuscatedToString should contain(s"***${password.takeRight(4)}")
-    obfuscatedToString should contain(s"***${pinCode.takeRight(4)}")
+    obfuscatedToString should include("*" * password.length)
+    obfuscatedToString should include("*" * pinCode.length)
   }
 
   "`toString` method on TestObfuscateCreditCard case class obfuscates password and pinCode fields" in {
@@ -42,9 +42,7 @@ class ObfuscateSpec extends WordSpec with Matchers {
       endDate = endDate
     )
 
-    val obfuscatedToString = testObfuscatedCreditCard.toString
-
-    obfuscatedToString should contain(s"***${cardNumber.takeRight(4)}")
+    testObfuscatedCreditCard.toString should include("*" * cardNumber.length)
   }
 
   "`toString` method in identical case classes are different when one of them obfuscate one of his fields" in {
