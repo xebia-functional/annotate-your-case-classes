@@ -30,7 +30,7 @@ object ToStringObfuscateImpl {
         q"""
             ${TermName(field)} = com.fortysevendeg.macros.ToStringObfuscateImpl.obfuscateValue(this.${TermName(field)})
           """
-      case _ => c.abort(c.enclosingPosition, s"[obfuscateValue] Match error with $tree")
+      case _ => c.abort(c.enclosingPosition, s"[replaceCaseClassSensitiveValues] Match error with $tree")
     }
 
     val sensitiveFields = extractAnnotationParameters(c.prefix.tree)
