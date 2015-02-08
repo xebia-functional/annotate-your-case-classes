@@ -1,6 +1,6 @@
 package com.fortysevendeg.macros
 
-import scala.annotation.{StaticAnnotation, tailrec}
+import scala.annotation.StaticAnnotation
 import scala.language.experimental.macros
 import scala.reflect.macros.whitebox
 
