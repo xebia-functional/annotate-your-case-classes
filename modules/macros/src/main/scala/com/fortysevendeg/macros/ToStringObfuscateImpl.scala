@@ -4,11 +4,11 @@ import scala.annotation.StaticAnnotation
 import scala.language.experimental.macros
 import scala.reflect.macros.whitebox
 
-class Obfuscate(fieldsToObfuscate: String*) extends StaticAnnotation {
-  def macroTransform(annottees: Any*): Any = macro ObfuscateImpl.impl
+class ToStringObfuscate(fieldsToObfuscate: String*) extends StaticAnnotation {
+  def macroTransform(annottees: Any*): Any = macro ToStringObfuscateImpl.impl
 }
 
-object ObfuscateImpl {
+object ToStringObfuscateImpl {
 
   def obfuscateValue(value: String) = "*" * value.length
 
@@ -17,7 +17,7 @@ object ObfuscateImpl {
 
     def extractAnnotationParameters(tree: Tree): List[c.universe.Tree] = tree match {
       case q"new $name( ..$params )" => params
-      case _ => throw new Exception("Obfuscate annotation must be have at least one parameter.")
+      case _ => throw new Exception("ToStringObfuscate annotation must be have at least one parameter.")
     }
 
     def extractCaseClassesParts(classDecl: ClassDef) = classDecl match {
@@ -28,7 +28,7 @@ object ObfuscateImpl {
     def replaceCaseClassSensitiveValues(tree: Tree) = tree match {
       case Literal(Constant(field: String)) =>
         q"""
-            ${TermName(field)} = com.fortysevendeg.macros.ObfuscateImpl.obfuscateValue(this.${TermName(field)})
+            ${TermName(field)} = com.fortysevendeg.macros.ToStringObfuscateImpl.obfuscateValue(this.${TermName(field)})
           """
       case _ => c.abort(c.enclosingPosition, s"[obfuscateValue] Match error with $tree")
     }
@@ -59,7 +59,7 @@ object ObfuscateImpl {
       )
     }
 
-    annottees.map(_.tree).toList match {
+    annottees map (_.tree) toList match {
       case (classDecl: ClassDef) :: Nil => modifiedDeclaration(classDecl)
       case _ => c.abort(c.enclosingPosition, "Invalid annottee")
     }
