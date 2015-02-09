@@ -1,5 +1,4 @@
-Annotate your Case Classes
----
+# Annotate your Case Classes
 
 We are sure that you have occasionally needed in some way applying a specific behavior on your classes, even more if we are talking about our domain model.
 
@@ -13,6 +12,12 @@ case class TestWithObfuscation(username : String, password : String)
 ```
 
 This repo brings an example about how to develop a `ToStringObfuscate` tag with Scala macros.
+
+## Test the Macro
+
+```bash
+ ./activator ";project examples;test"
+ ```
 
 License
 ======
