@@ -1,5 +1,11 @@
 scalaVersion := "2.11.5"
 
+organization := "com.fortysevendeg"
+
+organizationName := "47 Degrees"
+
+organizationHomepage := Some(new URL("http://47deg.com"))
+
 name := "annotate-your-case-classes"
 
 version := "1.0"
