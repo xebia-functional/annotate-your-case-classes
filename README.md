@@ -1,17 +1,8 @@
 # Annotate your Case Classes
 
-We are sure that you have occasionally needed in some way applying a specific behavior on your classes, even more if we are talking about our domain model.
+Chances are, you occasionally need some way to apply a specific behavior to your classes—even more often if you’re managing your domain model.
 
-Why the Scala macros could help us? Let us focus on an individual case to find a real motivation. Let us assume that your application handles sensitive information and many of our case classes have been modeled with critical data.
-
-How can we deal with this scenery? Should we separate among two types of classes type? Should we override `toString` method in all our classes in order to prevent show sensitive data in our log system? Of course not. There are several ways to accomplish it and one of them is use annotations over our classes, for example. Something like this could be a good deal:
-
-```
-@ToStringObfuscate("password")
-case class TestWithObfuscation(username : String, password : String)
-```
-
-This repo brings an example about how to develop a `ToStringObfuscate` tag with Scala macros.
+Scala macros could be the perfect solution and in this repo we are showing a specific use case related with the annotations in your code. This is the companion for the Scala Macros article published in this [Blog Post](http://www.47deg.com/blog/pending).
 
 ## Test the Macro
 
