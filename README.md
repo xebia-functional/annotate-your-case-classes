@@ -1,4 +1,4 @@
-[![Macroid-Extras Status](https://circleci.com/gh/47deg/annotate-your-case-classes.svg?&style=shield&circle-token=64357a7024f51a97548b75794ef323b52295a23b "Annotate your case Classes Status")](https://circleci.com/gh/47deg/annotate-your-case-classes)
+[![Annotate Your Case Classes Status](https://circleci.com/gh/47deg/annotate-your-case-classes.svg?&style=shield&circle-token=25b651493dca00841d74a8325ccadab4b443640b "Annotate your case Classes Status")](https://circleci.com/gh/47deg/annotate-your-case-classes)
 
 # Annotate your Case Classes
 
