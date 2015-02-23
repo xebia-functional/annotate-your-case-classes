@@ -2,7 +2,7 @@
 
 Chances are, you occasionally need some way to apply a specific behavior to your classes—even more often if you’re managing your domain model.
 
-Scala macros could be the perfect solution and in this repo we are showing a specific use case related with the annotations in your code. This is the companion for the Scala Macros article published in this [Blog Post](http://www.47deg.com/blog/pending).
+Scala macros could be the perfect solution and in this repo we are showing a specific use case related with the annotations in your code. This is the companion for the Scala Macros article published in this [Blog Post](http://www.47deg.com/blog/scala-macros-annotate-your-case-classes).
 
 ## Test the Macro
 
