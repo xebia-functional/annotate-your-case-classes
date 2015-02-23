@@ -1,8 +1,10 @@
+[![Annotate Your Case Classes Status](https://circleci.com/gh/47deg/annotate-your-case-classes.svg?&style=shield&circle-token=25b651493dca00841d74a8325ccadab4b443640b "Annotate your case Classes Status")](https://circleci.com/gh/47deg/annotate-your-case-classes)
+
 # Annotate your Case Classes
 
 Chances are, you occasionally need some way to apply a specific behavior to your classes—even more often if you’re managing your domain model.
 
-Scala macros could be the perfect solution and in this repo we are showing a specific use case related with the annotations in your code. This is the companion for the Scala Macros article published in this [Blog Post](http://www.47deg.com/blog/pending).
+Scala macros could be the perfect solution and in this repo we are showing a specific use case related with the annotations in your code. This is the companion for the Scala Macros article published in this [Blog Post](http://www.47deg.com/blog/scala-macros-annotate-your-case-classes).
 
 ## Test the Macro
 
