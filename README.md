@@ -1,3 +1,5 @@
+[![Macroid-Extras Status](https://circleci.com/gh/47deg/annotate-your-case-classes.svg?&style=shield&circle-token=64357a7024f51a97548b75794ef323b52295a23b "Annotate your case Classes Status")](https://circleci.com/gh/47deg/annotate-your-case-classes)
+
 # Annotate your Case Classes
 
 Chances are, you occasionally need some way to apply a specific behavior to your classes—even more often if you’re managing your domain model.
