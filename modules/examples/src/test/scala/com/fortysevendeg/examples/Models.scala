@@ -2,13 +2,21 @@ package com.fortysevendeg.examples
 
 import com.fortysevendeg.macros.ToStringObfuscate
 
-@ToStringObfuscate("password", "pinCode")
-case class TestObfuscatePassword(name: String, username : String, password : String, pinCode: String)
+object Obfuscated {
 
-@ToStringObfuscate("cardNumber")
-case class TestObfuscateCreditCard(cardNumber: String, cvv : Int, endDate: String)
+  @ToStringObfuscate("password", "pinCode")
+  case class TestObfuscatePassword(name: String, username: String, password: String, pinCode: String)
 
-@ToStringObfuscate("password")
-case class TestWithObfuscation(username : String, password : String)
+  @ToStringObfuscate("cardNumber")
+  case class TestObfuscateCreditCard(cardNumber: String, cvv: Int, endDate: String)
 
-case class TestWithoutObfuscation(username : String, password : String)
+  @ToStringObfuscate("password")
+  case class UserPassword(username: String, password: String)
+
+}
+
+object NonObfuscated {
+
+  case class UserPassword(username: String, password: String)
+
+}

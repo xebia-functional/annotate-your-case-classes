@@ -5,6 +5,7 @@ import java.util.UUID
 import org.scalatest.{Matchers, WordSpec}
 
 import scala.util.Random
+import com.fortysevendeg.examples.Obfuscated._
 
 class ObfuscateSpec extends WordSpec with Matchers {
 
@@ -50,12 +51,12 @@ class ObfuscateSpec extends WordSpec with Matchers {
     val username = generateUUID
     val password = generateUUID
 
-    val obfuscatedInstance = TestWithObfuscation(
+    val obfuscatedInstance = UserPassword(
       username = username,
       password = password
     )
 
-    val nonObfuscatedInstance = TestWithoutObfuscation(
+    val nonObfuscatedInstance = NonObfuscated.UserPassword(
       username = username,
       password = password
     )
