@@ -11,6 +11,8 @@ class ObfuscateSpec extends WordSpec with Matchers {
 
   def generateUUID = UUID.randomUUID().toString
 
+  def obfuscateAlgorithmUsedInMacro(value: String) = "*" * value.length
+
   "`toString` method on TestObfuscatePassword case class obfuscates password and pinCode fields" in {
 
     val name = generateUUID
@@ -18,32 +20,48 @@ class ObfuscateSpec extends WordSpec with Matchers {
     val password = generateUUID
     val pinCode = generateUUID
 
-    val testObfuscatePassword = TestObfuscatePassword(
+    val obfuscatedInstance = TestPassword(
       name = name,
       username = username,
       password = password,
       pinCode = pinCode
     )
 
-    val obfuscatedToString = testObfuscatePassword.toString
+    val nonObfuscatedInstance = NonObfuscated.TestPassword(
+      name = name,
+      username = username,
+      password = obfuscateAlgorithmUsedInMacro(password),
+      pinCode = obfuscateAlgorithmUsedInMacro(pinCode)
+    )
 
-    obfuscatedToString should include("*" * password.length)
-    obfuscatedToString should include("*" * pinCode.length)
+    val obfuscatedToString = obfuscatedInstance.toString
+    val nonObfuscatedToString = nonObfuscatedInstance.toString
+
+    obfuscatedToString shouldEqual nonObfuscatedToString
   }
 
-  "`toString` method on TestObfuscateCreditCard case class obfuscates password and pinCode fields" in {
+  "`toString` method on TestObfuscateCreditCard case class obfuscates the cardNumber field" in {
 
     val cardNumber = generateUUID
     val cvv = Random.nextInt(1000)
     val endDate = generateUUID
 
-    val testObfuscatedCreditCard = TestObfuscateCreditCard(
+    val obfuscatedInstance = TestCreditCard(
       cardNumber = cardNumber,
       cvv = cvv,
       endDate = endDate
     )
 
-    testObfuscatedCreditCard.toString should include("*" * cardNumber.length)
+    val nonObfuscatedInstance = NonObfuscated.TestCreditCard(
+      cardNumber = obfuscateAlgorithmUsedInMacro(cardNumber),
+      cvv = cvv,
+      endDate = endDate
+    )
+
+    val obfuscatedToString = obfuscatedInstance.toString
+    val nonObfuscatedToString = nonObfuscatedInstance.toString
+
+    obfuscatedToString shouldEqual nonObfuscatedToString
   }
 
   "`toString` method in identical case classes are different when one of them obfuscate one of his fields" in {

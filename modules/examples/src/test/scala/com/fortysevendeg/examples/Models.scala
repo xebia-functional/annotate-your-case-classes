@@ -5,10 +5,10 @@ import com.fortysevendeg.macros.ToStringObfuscate
 object Obfuscated {
 
   @ToStringObfuscate("password", "pinCode")
-  case class TestObfuscatePassword(name: String, username: String, password: String, pinCode: String)
+  case class TestPassword(name: String, username: String, password: String, pinCode: String)
 
   @ToStringObfuscate("cardNumber")
-  case class TestObfuscateCreditCard(cardNumber: String, cvv: Int, endDate: String)
+  case class TestCreditCard(cardNumber: String, cvv: Int, endDate: String)
 
   @ToStringObfuscate("password")
   case class UserPassword(username: String, password: String)
@@ -16,6 +16,10 @@ object Obfuscated {
 }
 
 object NonObfuscated {
+
+  case class TestPassword(name: String, username: String, password: String, pinCode: String)
+
+  case class TestCreditCard(cardNumber: String, cvv: Int, endDate: String)
 
   case class UserPassword(username: String, password: String)
 
