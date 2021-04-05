@@ -1,11 +1,25 @@
-scalaVersion := "2.11.5"
+ThisBuild / scalaVersion := "2.13.5"
+ThisBuild / organization := "com.47deg"
 
-name := "annotate-your-case-classes"
+lazy val macros = project
+  .in(file("modules/macros"))
+  .settings(
+    name := "macros",
+    resolvers ++= Seq("snapshots", "releases").map(Resolver.sonatypeRepo),
+    libraryDependencies ++= Seq(
+      scalaOrganization.value % "scala-compiler" % scalaVersion.value % Provided
+    ),
+    scalacOptions += "-Ymacro-annotations"
+  )
 
-version := "1.0"
-
-lazy val root = (project in file(".")).aggregate(macros, examples)
-
-lazy val macros = project.in(file("modules/macros"))
-
-lazy val examples = project.in(file("modules/examples")).dependsOn(macros)
+lazy val examples = project
+  .in(file("modules/examples"))
+  .settings(
+    name := "macros",
+    resolvers ++= Seq("snapshots", "releases").map(Resolver.sonatypeRepo),
+    libraryDependencies ++= Seq(
+      scalaOrganization.value % "scala-compiler" % scalaVersion.value % Provided,
+      "org.scalatest" %% "scalatest" % "3.2.5" % "test"
+    ),
+    scalacOptions += "-Ymacro-annotations"
+  ).dependsOn(macros)

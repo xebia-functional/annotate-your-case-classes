@@ -15,7 +15,7 @@ object ToStringObfuscateImpl {
   def impl(c: whitebox.Context)(annottees: c.Expr[Any]*): c.Expr[Any] = {
     import c.universe._
 
-    def extractAnnotationParameters(tree: Tree): List[c.universe.Tree] = tree match {
+    def extractAnnotationParameters(tree: Tree) = tree match {
       case q"new $name( ..$params )" => params
       case _ => throw new Exception("ToStringObfuscate annotation must be have at least one parameter.")
     }
@@ -59,7 +59,7 @@ object ToStringObfuscateImpl {
       )
     }
 
-    annottees map (_.tree) toList match {
+    annottees.map(_.tree).toList match {
       case (classDecl: ClassDef) :: Nil => modifiedDeclaration(classDecl)
       case _ => c.abort(c.enclosingPosition, "Invalid annottee")
     }

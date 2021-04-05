@@ -1,13 +1,12 @@
 package com.fortysevendeg.examples
 
 import java.util.UUID
-
-import org.scalatest.{Matchers, WordSpec}
-
+import org.scalatest.wordspec.AnyWordSpec
+import org.scalatest.matchers.should.Matchers
 import scala.util.Random
 import com.fortysevendeg.examples.Obfuscated._
 
-class ObfuscateSpec extends WordSpec with Matchers {
+class ObfuscateSpec extends AnyWordSpec with Matchers {
 
   def generateUUID = UUID.randomUUID().toString
 
