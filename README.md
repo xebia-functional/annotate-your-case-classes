@@ -9,7 +9,7 @@ Scala macros could be the perfect solution and in this repo we are showing a spe
 ## Test the Macro
 
 ```bash
- ./activator ";project examples;test"
+ sbt ";project examples;test"
  ```
 
 License
